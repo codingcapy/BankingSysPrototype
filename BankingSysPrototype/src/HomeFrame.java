@@ -147,6 +147,26 @@ public class HomeFrame extends JFrame {
 		logoutButton = new JButton("Log out");
 		logoutButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					writer = new FileWriter(file);
+					for (Profile profile : Storage.profilesList) {
+						writer.write(profile.profileData());
+					}
+					writer.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					writer2 = new FileWriter(file2);
+					for (Account account : Storage.accountsList) {
+						writer2.write(account.accountData());
+					}
+					writer2.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				dispose();
 			}
 		});
