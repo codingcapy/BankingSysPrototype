@@ -196,6 +196,35 @@ public class ProfileDialog extends JDialog {
 				saveButton.setVisible(false);
 				saveButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						int index = 0;
+						String firstName = firstNameField.getText();
+						String middleName = middleNameField.getText();
+						String lastName = lastNameField.getText();
+						String dateOfBirth = dateOfBirthField.getText();
+						String address = addressField.getText();
+						String phoneNumber = phoneNumberField.getText();
+						String emailAddress = emailAddressField.getText();
+						
+						for (Profile profile : Storage.profilesList) {
+							if (profile.getProfileNumber().equals(profileNumberField.getText())) {
+								profile.setFirstName(firstName);
+								profile.setMiddleName(middleName);
+								profile.setLastName(lastName);
+								profile.setDateOfBirth(dateOfBirth);
+								profile.setAddress(address);
+								profile.setPhoneNumber(phoneNumber);
+								profile.setEmailAddress(emailAddress);
+								index = Storage.profilesList.indexOf(profile);
+								System.out.println(profile);
+							}
+						}
+						Storage.profilesListModel.get(index).setFirstName(firstName);
+						Storage.profilesListModel.get(index).setMiddleName(middleName);
+						Storage.profilesListModel.get(index).setLastName(lastName);
+						Storage.profilesListModel.get(index).setDateOfBirth(dateOfBirth);
+						Storage.profilesListModel.get(index).setAddress(address);
+						Storage.profilesListModel.get(index).setPhoneNumber(phoneNumber);
+						Storage.profilesListModel.get(index).setEmailAddress(emailAddress);
 						firstNameField.setEnabled(false);
 						middleNameField.setEnabled(false);
 						lastNameField.setEnabled(false);

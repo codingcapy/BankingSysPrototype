@@ -77,7 +77,7 @@ public class Profile {
 	/**
 	 * @param middleName the middleName to set
 	 */
-	public void middleName(String firstName) {
+	public void setMiddleName(String firstName) {
 		this.firstName = firstName;
 	}
 	/**
