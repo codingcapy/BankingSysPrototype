@@ -29,18 +29,18 @@ public class LoginFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					LoginFrame frame = new LoginFrame();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	//	public static void main(String[] args) {
+	//		EventQueue.invokeLater(new Runnable() {
+	//			public void run() {
+	//				try {
+	//					LoginFrame frame = new LoginFrame();
+	//					frame.setVisible(true);
+	//				} catch (Exception e) {
+	//					e.printStackTrace();
+	//				}
+	//			}
+	//		});
+	//	}
 
 	/**
 	 * Create the frame.
@@ -56,21 +56,21 @@ public class LoginFrame extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[][][][][grow][][grow]", "[][][][][][][][]"));
-		
+
 		JLabel userNameLabel = new JLabel("Username");
 		contentPane.add(userNameLabel, "cell 2 3");
-		
+
 		userNameField = new JTextField();
 		contentPane.add(userNameField, "cell 4 3,growx");
 		userNameField.setColumns(10);
-		
+
 		JLabel passwordLabel = new JLabel("Password");
 		contentPane.add(passwordLabel, "cell 2 5");
-		
+
 		passwordField = new JTextField();
 		contentPane.add(passwordField, "cell 4 5,growx");
 		passwordField.setColumns(10);
-		
+
 		JButton loginButton = new JButton("Login");
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,7 +79,7 @@ public class LoginFrame extends JFrame {
 			}
 		});
 		contentPane.add(loginButton, "flowx,cell 4 7");
-		
+
 		forgotPasswordButton = new JButton("Forgot Password");
 		forgotPasswordButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

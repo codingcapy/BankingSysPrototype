@@ -325,7 +325,31 @@ public class HomeFrame extends JFrame {
 					}
 					profileDialog.setVisible(true);
 				}
-
+				else if(!byAccountNumberField.getText().isEmpty()) {
+					String inputSearch = byAccountNumberField.getText();
+					for (Account account : Storage.accountsList) {
+						if (account.getAccountNumber().equals(inputSearch)) {
+							for (Profile profile : Storage.profilesList) {
+								if (profile.getProfileNumber().equals(account.getProfileNumber())) {
+									profileDialog.profileNumberField.setText(profile.getProfileNumber());
+									profileDialog.firstNameField.setText(profile.getFirstName());
+									profileDialog.middleNameField.setText(profile.getMiddleName());
+									profileDialog.lastNameField.setText(profile.getLastName());
+									profileDialog.addressField.setText(profile.getAddress());
+									profileDialog.dateOfBirthField.setText(profile.getDateOfBirth());
+									profileDialog.phoneNumberField.setText(profile.getPhoneNumber());
+									profileDialog.emailAddressField.setText(profile.getEmailAddress());
+								}
+							}
+						}
+					}
+					for (Account account : Storage.accountsList) {
+						if (profileDialog.profileNumberField.getText().equals(account.getProfileNumber())) {
+							Storage.accountsListModel.addElement(account);
+						}
+					}
+					profileDialog.setVisible(true);
+				}
 			}
 		});
 

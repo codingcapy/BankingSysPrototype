@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -39,15 +41,15 @@ public class ProfileDialog extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		try {
-//			ProfileDialog dialog = new ProfileDialog();
-//			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-//			dialog.setVisible(true);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	//	public static void main(String[] args) {
+	//		try {
+	//			ProfileDialog dialog = new ProfileDialog();
+	//			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+	//			dialog.setVisible(true);
+	//		} catch (Exception e) {
+	//			e.printStackTrace();
+	//		}
+	//	}
 
 	/**
 	 * Create the dialog.
@@ -176,13 +178,17 @@ public class ProfileDialog extends JDialog {
 			JButton deleteAccountButton = new JButton("Delete Account");
 			deleteAccountButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					for (Account account : Storage.accountsList) {
-						if (account.getAccountNumber().equals(list.getSelectedValue().getAccountNumber())) {
-							Storage.accountsList.remove(account);
-							break;
+					int resp = JOptionPane.showConfirmDialog(ProfileDialog.this, "Are you sure you want to delete?", "Delete Account", JOptionPane.YES_NO_OPTION);
+					if (resp == JOptionPane.YES_OPTION) {
+						for (Account account : Storage.accountsList) {
+							if (account.getAccountNumber().equals(list.getSelectedValue().getAccountNumber())) {
+								Storage.accountsList.remove(account);
+								break;
+							}
 						}
+						Storage.accountsListModel.removeElement(list.getSelectedValue());
+						JOptionPane.showMessageDialog(null, "All funds have been withdrawn in cash and provided to customer");
 					}
-					Storage.accountsListModel.removeElement(list.getSelectedValue());
 				}
 			});
 			contentPanel.add(deleteAccountButton, "cell 5 9");
@@ -204,7 +210,7 @@ public class ProfileDialog extends JDialog {
 						String address = addressField.getText();
 						String phoneNumber = phoneNumberField.getText();
 						String emailAddress = emailAddressField.getText();
-						
+
 						for (Profile profile : Storage.profilesList) {
 							if (profile.getProfileNumber().equals(profileNumberField.getText())) {
 								profile.setFirstName(firstName);

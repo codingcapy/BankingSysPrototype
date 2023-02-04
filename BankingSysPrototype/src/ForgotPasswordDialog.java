@@ -27,15 +27,15 @@ public class ForgotPasswordDialog extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		try {
-//			ForgotPasswordDialog dialog = new ForgotPasswordDialog();
-//			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-//			dialog.setVisible(true);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	//	public static void main(String[] args) {
+	//		try {
+	//			ForgotPasswordDialog dialog = new ForgotPasswordDialog();
+	//			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+	//			dialog.setVisible(true);
+	//		} catch (Exception e) {
+	//			e.printStackTrace();
+	//		}
+	//	}
 
 	/**
 	 * Create the dialog.
@@ -64,8 +64,13 @@ public class ForgotPasswordDialog extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						JOptionPane.showMessageDialog(null, "A temporary password has been sent to your email.");
-						dispose();
+						if(emailField.getText().isEmpty()) {
+							JOptionPane.showMessageDialog(null, "Please enter an email address");
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "A temporary password has been sent to your email.");
+							dispose();
+						}
 					}
 				});
 				okButton.setActionCommand("OK");

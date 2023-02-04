@@ -72,13 +72,13 @@ public class Profile {
 	 * @return the middleName
 	 */
 	public String getMiddleName() {
-		return firstName;
+		return middleName;
 	}
 	/**
 	 * @param middleName the middleName to set
 	 */
-	public void setMiddleName(String firstName) {
-		this.firstName = firstName;
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
 	}
 	/**
 	 * @return the lastName
