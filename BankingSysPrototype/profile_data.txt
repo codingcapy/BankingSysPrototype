@@ -1,3 +1,0 @@
-00000000,a,a,a,a,a,a,a
-00000001,b,b,b,b,b,b,b
-00000002,Sunghun,,Kim,1989-09-21,4103 6538 Nelson Ave Burnaby BC V5H 0G5,778-994-4939,spkim0921@gmail.com

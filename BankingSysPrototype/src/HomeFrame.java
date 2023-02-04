@@ -64,8 +64,8 @@ public class HomeFrame extends JFrame {
 	 */
 	public HomeFrame() {
 		setTitle("Banking System Prototype");
-		file = new File("profile_data.txt");
-		file2 = new File("account_data.txt");
+		file = new File("profile_data.csv");
+		file2 = new File("account_data.csv");
 		try {
 			scanner = new Scanner(file);
 			while (scanner.hasNext()) {
