@@ -1,3 +1,9 @@
+/*
+ * author: Paul Kim
+ * date: February 4, 2023
+ * version: 1.0
+ * This is a banking system prototype program
+ */
 
 public class Account {
 	private String profileNumber;

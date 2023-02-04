@@ -1,3 +1,10 @@
+/*
+ * author: Paul Kim
+ * date: February 4, 2023
+ * version: 1.0
+ * This is a banking system prototype program
+ */
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -49,11 +56,11 @@ public class ProfileDialog extends JDialog {
 		setTitle("Profile");
 		createAccountDialog = new CreateAccountDialog();
 		accountDialog = new AccountDialog();
-		setBounds(700, 350, 1000, 500);
+		setBounds(600, 250, 1200, 500);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(new MigLayout("", "[][][][grow][-81.00][][-21.00][grow][][][-27.00][grow][]", "[][][][][][][][][][grow]"));
+		contentPanel.setLayout(new MigLayout("", "[][][][grow][-81.00][][-21.00][][][][-27.00][grow][]", "[][][][][][][][][][grow]"));
 		{
 			JLabel profileNumberLabel = new JLabel("Profile Number");
 			contentPanel.add(profileNumberLabel, "cell 1 1");
@@ -153,7 +160,7 @@ public class ProfileDialog extends JDialog {
 					accountDialog.setVisible(true);
 				}
 			});
-			contentPanel.add(selectAccountButton, "cell 5 9");
+			contentPanel.add(selectAccountButton, "flowy,cell 5 9");
 		}
 		{
 			JButton createAccountButton = new JButton("Create Account");
@@ -163,7 +170,7 @@ public class ProfileDialog extends JDialog {
 					createAccountDialog.setVisible(true);
 				}
 			});
-			contentPanel.add(createAccountButton, "cell 7 9");
+			contentPanel.add(createAccountButton, "cell 5 9");
 		}
 		{
 			JButton deleteAccountButton = new JButton("Delete Account");
@@ -178,7 +185,7 @@ public class ProfileDialog extends JDialog {
 					Storage.accountsListModel.removeElement(list.getSelectedValue());
 				}
 			});
-			contentPanel.add(deleteAccountButton, "cell 8 9");
+			contentPanel.add(deleteAccountButton, "cell 5 9");
 		}
 		{
 			JPanel buttonPane = new JPanel();
