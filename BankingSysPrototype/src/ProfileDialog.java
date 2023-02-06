@@ -58,11 +58,11 @@ public class ProfileDialog extends JDialog {
 		setTitle("Profile");
 		createAccountDialog = new CreateAccountDialog();
 		accountDialog = new AccountDialog();
-		setBounds(600, 250, 1200, 500);
+		setBounds(600, 250, 1000, 500);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(new MigLayout("", "[][][][grow][-81.00][][-21.00][][][][-27.00][grow][]", "[][][][][][][][][][grow]"));
+		contentPanel.setLayout(new MigLayout("", "[][85px:85px][][185px:185px,grow][][75px:75px][][185px:185px][][75px:75px][][150px:150px][][][][-81.00][-21.00][-27.00]", "[][][][][][][][][][grow][][grow][]"));
 		{
 			JLabel profileNumberLabel = new JLabel("Profile Number");
 			contentPanel.add(profileNumberLabel, "cell 1 1");
@@ -144,8 +144,12 @@ public class ProfileDialog extends JDialog {
 			emailAddressField.setColumns(10);
 		}
 		{
+			JLabel accountsLabel = new JLabel("Accounts");
+			contentPanel.add(accountsLabel, "cell 1 9");
+		}
+		{
 			JScrollPane scrollPane = new JScrollPane();
-			contentPanel.add(scrollPane, "cell 3 9,grow");
+			contentPanel.add(scrollPane, "cell 3 9 9 1,grow");
 			{
 				list = new JList<Account>(Storage.accountsListModel);
 				scrollPane.setViewportView(list);
@@ -162,7 +166,7 @@ public class ProfileDialog extends JDialog {
 					accountDialog.setVisible(true);
 				}
 			});
-			contentPanel.add(selectAccountButton, "flowy,cell 5 9");
+			contentPanel.add(selectAccountButton, "flowy,cell 13 9");
 		}
 		{
 			JButton createAccountButton = new JButton("Create Account");
@@ -172,7 +176,7 @@ public class ProfileDialog extends JDialog {
 					createAccountDialog.setVisible(true);
 				}
 			});
-			contentPanel.add(createAccountButton, "cell 5 9");
+			contentPanel.add(createAccountButton, "cell 13 9");
 		}
 		{
 			JButton deleteAccountButton = new JButton("Delete Account");
@@ -191,7 +195,23 @@ public class ProfileDialog extends JDialog {
 					}
 				}
 			});
-			contentPanel.add(deleteAccountButton, "cell 5 9");
+			contentPanel.add(deleteAccountButton, "cell 13 9");
+		}
+		{
+			JLabel notesLabel = new JLabel("Notes");
+			contentPanel.add(notesLabel, "cell 1 11");
+		}
+		{
+			JScrollPane scrollPane = new JScrollPane();
+			contentPanel.add(scrollPane, "cell 3 11 9 1,grow");
+			{
+				JList list_1 = new JList();
+				scrollPane.setViewportView(list_1);
+			}
+		}
+		{
+			JButton addNotesButton = new JButton("Add Notes");
+			contentPanel.add(addNotesButton, "cell 13 11");
 		}
 		{
 			JPanel buttonPane = new JPanel();

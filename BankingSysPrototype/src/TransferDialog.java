@@ -104,6 +104,7 @@ public class TransferDialog extends JDialog {
 									account.setAccountBalance(previousBalance + Double.parseDouble(amountField.getText()));
 								}
 							}
+							JOptionPane.showMessageDialog(null, "Transfer successful");
 							dispose();
 						}
 					}

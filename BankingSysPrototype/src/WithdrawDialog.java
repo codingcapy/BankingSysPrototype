@@ -76,7 +76,7 @@ public class WithdrawDialog extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(withdrawalField.getText().isEmpty()) {
-							JOptionPane.showMessageDialog(null, "Please input an amount to deposit");
+							JOptionPane.showMessageDialog(null, "Please input an amount to withdraw");
 						}
 						else {
 							for(Account account : Storage.accountsList) {
@@ -85,6 +85,7 @@ public class WithdrawDialog extends JDialog {
 									account.setAccountBalance(previousBalance - Double.parseDouble(withdrawalField.getText()));
 								}
 							}
+							JOptionPane.showMessageDialog(null, "Withdrawal successful");
 							dispose();
 						}
 					}

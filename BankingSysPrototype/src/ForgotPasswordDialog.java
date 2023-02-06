@@ -22,7 +22,7 @@ import java.awt.event.ActionEvent;
 public class ForgotPasswordDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField emailField;
+	JTextField emailField;
 
 	/**
 	 * Launch the application.

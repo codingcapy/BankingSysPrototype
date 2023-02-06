@@ -85,6 +85,7 @@ public class DepositDialog extends JDialog {
 									account.setAccountBalance(previousBalance + Double.parseDouble(depositAmountField.getText()));
 								}
 							}
+							JOptionPane.showMessageDialog(null, "Deposit successful");
 							dispose();
 						}
 					}

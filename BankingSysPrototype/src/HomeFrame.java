@@ -35,9 +35,10 @@ public class HomeFrame extends JFrame {
 	private JLabel byEmailLabel;
 	private JTextField byEmailField;
 	private JLabel byAccountNumberLabel;
+	private JLabel byPhoneNumberLabel;
 	private JTextField byAccountNumberField;
 	private JButton displayAllProfilesButton;
-	private JButton submitButton;
+	private JButton searchButton;
 	private ProfileDialog profileDialog;
 	private AllProfilesDialog allProfilesDialog;
 	private JButton createNewProfileButton;
@@ -148,8 +149,8 @@ public class HomeFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[][][][grow][][]", "[][][][][][][][][][][][][][]"));
 
-		JLabel searchProfileLabel = new JLabel("Search Profile");
-		contentPane.add(searchProfileLabel, "cell 1 1");
+		JLabel searchProfileLabel = new JLabel("Search Profile using a category below");
+		contentPane.add(searchProfileLabel, "cell 1 1 3 1");
 
 		logoutButton = new JButton("Log out");
 		logoutButton.addActionListener(new ActionListener() {
@@ -187,18 +188,22 @@ public class HomeFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				byProfileNumberField.setEnabled(true);
+				byProfileNumberLabel.setEnabled(true);
 				byPhoneNumberField.setEnabled(false);
+				byPhoneNumberLabel.setEnabled(false);
 				byPhoneNumberField.setText("");
 				byEmailField.setEnabled(false);
+				byEmailLabel.setEnabled(false);
 				byEmailField.setText("");
 				byAccountNumberField.setEnabled(false);
+				byAccountNumberLabel.setEnabled(false);
 				byAccountNumberField.setText("");
 			}
 		});
 		contentPane.add(byProfileNumberField, "cell 3 3,growx");
 		byProfileNumberField.setColumns(10);
 
-		JLabel byPhoneNumberLabel = new JLabel("By Phone Number");
+		byPhoneNumberLabel = new JLabel("By Phone Number");
 		contentPane.add(byPhoneNumberLabel, "cell 1 5");
 
 		byPhoneNumberField = new JTextField();
@@ -206,11 +211,15 @@ public class HomeFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				byProfileNumberField.setEnabled(false);
+				byProfileNumberLabel.setEnabled(false);
 				byProfileNumberField.setText("");
 				byPhoneNumberField.setEnabled(true);
+				byPhoneNumberLabel.setEnabled(true);
 				byEmailField.setEnabled(false);
+				byEmailLabel.setEnabled(false);
 				byEmailField.setText("");
 				byAccountNumberField.setEnabled(false);
+				byAccountNumberLabel.setEnabled(false);
 				byAccountNumberField.setText("");
 			}
 		});
@@ -225,11 +234,15 @@ public class HomeFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				byProfileNumberField.setEnabled(false);
+				byProfileNumberLabel.setEnabled(false);
 				byProfileNumberField.setText("");
 				byPhoneNumberField.setEnabled(false);
+				byPhoneNumberLabel.setEnabled(false);
 				byPhoneNumberField.setText("");
 				byEmailField.setEnabled(true);
+				byEmailLabel.setEnabled(true);
 				byAccountNumberField.setEnabled(false);
+				byAccountNumberLabel.setEnabled(false);
 				byAccountNumberField.setText("");
 			}
 		});
@@ -244,19 +257,21 @@ public class HomeFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				byProfileNumberField.setEnabled(false);
+				byProfileNumberLabel.setEnabled(false);
 				byProfileNumberField.setText("");
 				byPhoneNumberField.setEnabled(false);
 				byPhoneNumberField.setText("");
 				byEmailField.setEnabled(false);
 				byEmailField.setText("");
 				byAccountNumberField.setEnabled(true);
+				byAccountNumberLabel.setEnabled(true);
 			}
 		});
 		contentPane.add(byAccountNumberField, "cell 3 9,growx");
 		byAccountNumberField.setColumns(10);
 
-		submitButton = new JButton("Submit");
-		submitButton.addActionListener(new ActionListener() {
+		searchButton = new JButton("Search");
+		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Storage.accountsListModel.removeAllElements();
 				if (byProfileNumberField.getText().isEmpty() && byPhoneNumberField.getText().isEmpty() && byEmailField.getText().isEmpty() && byAccountNumberField.getText().isEmpty()) {
@@ -353,7 +368,7 @@ public class HomeFrame extends JFrame {
 			}
 		});
 
-		contentPane.add(submitButton, "cell 3 11");
+		contentPane.add(searchButton, "cell 3 11");
 
 		displayAllProfilesButton = new JButton("Display All Profiles");
 		displayAllProfilesButton.addActionListener(new ActionListener() {

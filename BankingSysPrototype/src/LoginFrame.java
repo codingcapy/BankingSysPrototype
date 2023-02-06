@@ -83,6 +83,7 @@ public class LoginFrame extends JFrame {
 		forgotPasswordButton = new JButton("Forgot Password");
 		forgotPasswordButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				forgotPasswordDialog.emailField.setText("");
 				forgotPasswordDialog.setVisible(true);
 			}
 		});
