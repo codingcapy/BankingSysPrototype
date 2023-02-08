@@ -9,9 +9,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -21,7 +23,7 @@ public class LoginFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField userNameField;
-	private JTextField passwordField;
+	private JPasswordField passwordField;
 	private JButton forgotPasswordButton;
 	private HomeFrame homeFrame;
 	private ForgotPasswordDialog forgotPasswordDialog;
@@ -67,15 +69,20 @@ public class LoginFrame extends JFrame {
 		JLabel passwordLabel = new JLabel("Password");
 		contentPane.add(passwordLabel, "cell 2 5");
 
-		passwordField = new JTextField();
+		passwordField = new JPasswordField();
 		contentPane.add(passwordField, "cell 4 5,growx");
 		passwordField.setColumns(10);
 
 		JButton loginButton = new JButton("Login");
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(userNameField.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Please enter a valid username and password");
+				}
+				else {
 				homeFrame.setVisible(true);
 				dispose();
+				}
 			}
 		});
 		contentPane.add(loginButton, "flowx,cell 4 7");

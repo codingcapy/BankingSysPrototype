@@ -8,6 +8,7 @@
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -36,7 +37,10 @@ public class ProfileDialog extends JDialog {
 	JButton saveButton;
 	JTextField dateOfBirthField;
 	CreateAccountDialog createAccountDialog;
+	NotesDialog notesDialog;
 	JList<Account> list;
+	JList<String> notesList;
+	static DefaultListModel<String> notesListModel = new DefaultListModel<String>();
 
 	/**
 	 * Launch the application.
@@ -55,6 +59,7 @@ public class ProfileDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public ProfileDialog() {
+		notesDialog = new NotesDialog();
 		setTitle("Profile");
 		createAccountDialog = new CreateAccountDialog();
 		accountDialog = new AccountDialog();
@@ -119,6 +124,7 @@ public class ProfileDialog extends JDialog {
 		}
 		{
 			dateOfBirthField = new JTextField();
+			dateOfBirthField.setText("YYYY-MM-DD");
 			dateOfBirthField.setEnabled(false);
 			contentPanel.add(dateOfBirthField, "cell 7 5,growx");
 			dateOfBirthField.setColumns(10);
@@ -129,6 +135,7 @@ public class ProfileDialog extends JDialog {
 		}
 		{
 			phoneNumberField = new JTextField();
+			phoneNumberField.setText("###-###-####");
 			phoneNumberField.setEnabled(false);
 			contentPanel.add(phoneNumberField, "cell 3 7,growx");
 			phoneNumberField.setColumns(10);
@@ -205,12 +212,18 @@ public class ProfileDialog extends JDialog {
 			JScrollPane scrollPane = new JScrollPane();
 			contentPanel.add(scrollPane, "cell 3 11 9 1,grow");
 			{
-				JList list_1 = new JList();
-				scrollPane.setViewportView(list_1);
+				notesList = new JList<String>(notesListModel);
+				scrollPane.setViewportView(notesList);
 			}
 		}
 		{
 			JButton addNotesButton = new JButton("Add Notes");
+			addNotesButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					notesDialog.notesField.setText("");
+					notesDialog.setVisible(true);
+				}
+			});
 			contentPanel.add(addNotesButton, "cell 13 11");
 		}
 		{
