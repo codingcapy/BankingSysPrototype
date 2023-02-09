@@ -46,10 +46,13 @@ public class HomeFrame extends JFrame {
 	private CreateNewProfileDialog createNewProfileDialog;
 	private File file;
 	private File file2;
+	private File file3;
 	private Scanner scanner;
 	private Scanner scanner2;
+	private Scanner scanner3;
 	private FileWriter writer;
 	private FileWriter writer2;
+	private FileWriter writer3;
 
 	/**
 	 * Launch the application.
@@ -74,6 +77,7 @@ public class HomeFrame extends JFrame {
 		setTitle("Banking System Prototype");
 		file = new File("profile_data.csv");
 		file2 = new File("account_data.csv");
+		file3 = new File("note_data.csv");
 		try {
 			scanner = new Scanner(file);
 			while (scanner.hasNext()) {
@@ -114,6 +118,21 @@ public class HomeFrame extends JFrame {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		try {
+			scanner3 = new Scanner(file3);
+			while (scanner3.hasNext()) {
+				String line3 = scanner3.nextLine();
+				String[] nData = line3.split(",");
+				String profileNumber = nData[0];
+				String note = nData[1];
+				Note newNote = new Note(profileNumber, note);
+				Storage.notesList.add(newNote);
+			}
+			scanner3.close();
+		} catch (FileNotFoundException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		profileDialog = new ProfileDialog();
 		allProfilesDialog = new AllProfilesDialog();
 		createNewProfileDialog = new CreateNewProfileDialog();
@@ -135,6 +154,16 @@ public class HomeFrame extends JFrame {
 						writer2.write(account.accountData());
 					}
 					writer2.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					writer3 = new FileWriter(file3);
+					for (Note note : Storage.notesList) {
+						writer3.write(note.noteData());
+					}
+					writer3.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -171,6 +200,16 @@ public class HomeFrame extends JFrame {
 						writer2.write(account.accountData());
 					}
 					writer2.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					writer3 = new FileWriter(file3);
+					for (Note note : Storage.notesList) {
+						writer3.write(note.noteData());
+					}
+					writer3.close();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -296,6 +335,11 @@ public class HomeFrame extends JFrame {
 							Storage.accountsListModel.addElement(account);
 						}
 					}
+					for (Note note : Storage.notesList) {
+						if (profileDialog.profileNumberField.getText().equals(note.getProfileNumber())) {
+							Storage.notesListModel.addElement(note);
+						}
+					}
 					profileDialog.setVisible(true);
 				}
 				else if(!byPhoneNumberField.getText().isEmpty()) {
@@ -317,6 +361,11 @@ public class HomeFrame extends JFrame {
 							Storage.accountsListModel.addElement(account);
 						}
 					}
+					for (Note note : Storage.notesList) {
+						if (profileDialog.profileNumberField.getText().equals(note.getProfileNumber())) {
+							Storage.notesListModel.addElement(note);
+						}
+					}
 					profileDialog.setVisible(true);
 				}
 				else if(!byEmailField.getText().isEmpty()) {
@@ -336,6 +385,11 @@ public class HomeFrame extends JFrame {
 					for (Account account : Storage.accountsList) {
 						if (profileDialog.profileNumberField.getText().equals(account.getProfileNumber())) {
 							Storage.accountsListModel.addElement(account);
+						}
+					}
+					for (Note note : Storage.notesList) {
+						if (profileDialog.profileNumberField.getText().equals(note.getProfileNumber())) {
+							Storage.notesListModel.addElement(note);
 						}
 					}
 					profileDialog.setVisible(true);
@@ -361,6 +415,11 @@ public class HomeFrame extends JFrame {
 					for (Account account : Storage.accountsList) {
 						if (profileDialog.profileNumberField.getText().equals(account.getProfileNumber())) {
 							Storage.accountsListModel.addElement(account);
+						}
+					}
+					for (Note note : Storage.notesList) {
+						if (profileDialog.profileNumberField.getText().equals(note.getProfileNumber())) {
+							Storage.notesListModel.addElement(note);
 						}
 					}
 					profileDialog.setVisible(true);

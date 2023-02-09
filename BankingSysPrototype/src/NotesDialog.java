@@ -16,6 +16,7 @@ public class NotesDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	JTextField notesField;
+	JTextField profileNumberField;
 
 	/**
 	 * Launch the application.
@@ -41,6 +42,16 @@ public class NotesDialog extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new MigLayout("", "[][][][][grow][]", "[][][][][]"));
 		{
+			JLabel profileNumberLabel = new JLabel("Profile Number");
+			contentPanel.add(profileNumberLabel, "cell 2 1,growx");
+		}
+		{
+			profileNumberField = new JTextField();
+			profileNumberField.setEnabled(false);
+			contentPanel.add(profileNumberField, "cell 4 1,growx");
+			profileNumberField.setColumns(10);
+		}
+		{
 			JLabel addNotesLabel = new JLabel("Add Notes");
 			contentPanel.add(addNotesLabel, "cell 2 3");
 		}
@@ -57,7 +68,9 @@ public class NotesDialog extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						ProfileDialog.notesListModel.addElement(notesField.getText());
+						Note newNote = new Note(profileNumberField.getText(),notesField.getText());
+						Storage.notesListModel.addElement(newNote);
+						Storage.notesList.add(newNote);
 						JOptionPane.showMessageDialog(null, "Notes added successfully");
 						dispose();
 					}

@@ -39,8 +39,7 @@ public class ProfileDialog extends JDialog {
 	CreateAccountDialog createAccountDialog;
 	NotesDialog notesDialog;
 	JList<Account> list;
-	JList<String> notesList;
-	static DefaultListModel<String> notesListModel = new DefaultListModel<String>();
+	JList<Note> notesList;
 
 	/**
 	 * Launch the application.
@@ -212,7 +211,7 @@ public class ProfileDialog extends JDialog {
 			JScrollPane scrollPane = new JScrollPane();
 			contentPanel.add(scrollPane, "cell 3 11 9 1,grow");
 			{
-				notesList = new JList<String>(notesListModel);
+				notesList = new JList<Note>(Storage.notesListModel);
 				scrollPane.setViewportView(notesList);
 			}
 		}
@@ -220,6 +219,7 @@ public class ProfileDialog extends JDialog {
 			JButton addNotesButton = new JButton("Add Notes");
 			addNotesButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					notesDialog.profileNumberField.setText(profileNumberField.getText());
 					notesDialog.notesField.setText("");
 					notesDialog.setVisible(true);
 				}

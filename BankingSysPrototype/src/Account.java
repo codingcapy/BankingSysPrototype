@@ -98,6 +98,6 @@ public class Account {
 				+ accountType + " | Interest Rate: " + interestRate + " | Account Balance: " + accountBalance;
 	}
 	public String accountData() {
-		return profileNumber + "," +accountNumber + "," + accountType + "," + interestRate + "," + accountBalance + "\n";
+		return profileNumber + "," + accountNumber + "," + accountType + "," + interestRate + "," + accountBalance + "\n";
 	}
 }

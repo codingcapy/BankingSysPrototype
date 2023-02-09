@@ -72,6 +72,11 @@ public class AllProfilesDialog extends JDialog {
 								Storage.accountsListModel.addElement(account);
 							}
 						}
+						for (Note note : Storage.notesList) {
+							if (profileDialog.profileNumberField.getText().equals(note.getProfileNumber())) {
+								Storage.notesListModel.addElement(note);
+							}
+						}
 						profileDialog.setVisible(true);
 					}
 				});

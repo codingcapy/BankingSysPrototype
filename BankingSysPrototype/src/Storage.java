@@ -14,6 +14,8 @@ public class Storage {
 	static DefaultListModel<Profile> profilesListModel = new DefaultListModel<Profile>();
 	static ArrayList<Account> accountsList = new ArrayList<Account>();
 	static DefaultListModel<Account> accountsListModel = new DefaultListModel<Account>();
+	static ArrayList<Note> notesList = new ArrayList<Note>();
+	static DefaultListModel<Note> notesListModel = new DefaultListModel<Note>();
 
 	public static String generateProfileNumber(ArrayList inputArray) {
 		String newNumber = null;
