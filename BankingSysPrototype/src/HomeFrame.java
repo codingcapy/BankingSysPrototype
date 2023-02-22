@@ -5,6 +5,7 @@
  * This is a banking system prototype program
  */
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -87,11 +88,18 @@ public class HomeFrame extends JFrame {
 				String firstName = pData[1];
 				String middleName = pData[2];
 				String lastName = pData[3];
-				String dateOfBirth = pData[4];
-				String address = pData[5];
-				String phoneNumber = pData[6];
-				String emailAddress = pData[7];
-				Profile newProfile = new Profile(profileNumber,firstName,middleName,lastName,dateOfBirth,address,phoneNumber,emailAddress);
+				String birthYear = pData[4];
+				String birthMonth = pData[5];
+				String birthDay = pData[6];
+				String streetAddress = pData[7];
+				String city = pData[8];
+				String province = pData[9];
+				String postalCode = pData[10];
+				String country = pData[11];
+				String phoneNumber = pData[12];
+				String emailAddress = pData[13];
+				Profile newProfile = new Profile(profileNumber,firstName,middleName,lastName,birthYear, birthMonth,birthDay,streetAddress,
+						city,province,postalCode,country,phoneNumber,emailAddress);
 				Storage.profilesList.add(newProfile);
 				Storage.profilesListModel.addElement(newProfile);
 			}
@@ -313,6 +321,7 @@ public class HomeFrame extends JFrame {
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Storage.accountsListModel.removeAllElements();
+				Storage.notesListModel.removeAllElements();
 				if (byProfileNumberField.getText().isEmpty() && byPhoneNumberField.getText().isEmpty() && byEmailField.getText().isEmpty() && byAccountNumberField.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Please input search");
 				}
@@ -324,8 +333,14 @@ public class HomeFrame extends JFrame {
 							profileDialog.firstNameField.setText(profile.getFirstName());
 							profileDialog.middleNameField.setText(profile.getMiddleName());
 							profileDialog.lastNameField.setText(profile.getLastName());
-							profileDialog.addressField.setText(profile.getAddress());
-							profileDialog.dateOfBirthField.setText(profile.getDateOfBirth());
+							profileDialog.streetAddressField.setText(profile.getStreetAddress());
+							profileDialog.cityField.setText(profile.getCity());
+							profileDialog.provinceField.setText(profile.getProvince());
+							profileDialog.postalCodeField.setText(profile.getPostalCode());
+							profileDialog.countryField.setText(profile.getCountry());
+							profileDialog.birthDayField.setText(profile.getBirthDay());
+							profileDialog.birthMonthField.setText(profile.getBirthMonth());
+							profileDialog.birthYearField.setText(profile.getBirthYear());
 							profileDialog.phoneNumberField.setText(profile.getPhoneNumber());
 							profileDialog.emailAddressField.setText(profile.getEmailAddress());
 						}
@@ -350,8 +365,14 @@ public class HomeFrame extends JFrame {
 							profileDialog.firstNameField.setText(profile.getFirstName());
 							profileDialog.middleNameField.setText(profile.getMiddleName());
 							profileDialog.lastNameField.setText(profile.getLastName());
-							profileDialog.addressField.setText(profile.getAddress());
-							profileDialog.dateOfBirthField.setText(profile.getDateOfBirth());
+							profileDialog.streetAddressField.setText(profile.getStreetAddress());
+							profileDialog.cityField.setText(profile.getCity());
+							profileDialog.provinceField.setText(profile.getProvince());
+							profileDialog.postalCodeField.setText(profile.getPostalCode());
+							profileDialog.countryField.setText(profile.getCountry());
+							profileDialog.birthDayField.setText(profile.getBirthDay());
+							profileDialog.birthMonthField.setText(profile.getBirthMonth());
+							profileDialog.birthYearField.setText(profile.getBirthYear());
 							profileDialog.phoneNumberField.setText(profile.getPhoneNumber());
 							profileDialog.emailAddressField.setText(profile.getEmailAddress());
 						}
@@ -376,8 +397,14 @@ public class HomeFrame extends JFrame {
 							profileDialog.firstNameField.setText(profile.getFirstName());
 							profileDialog.middleNameField.setText(profile.getMiddleName());
 							profileDialog.lastNameField.setText(profile.getLastName());
-							profileDialog.addressField.setText(profile.getAddress());
-							profileDialog.dateOfBirthField.setText(profile.getDateOfBirth());
+							profileDialog.streetAddressField.setText(profile.getStreetAddress());
+							profileDialog.cityField.setText(profile.getCity());
+							profileDialog.provinceField.setText(profile.getProvince());
+							profileDialog.postalCodeField.setText(profile.getPostalCode());
+							profileDialog.countryField.setText(profile.getCountry());
+							profileDialog.birthDayField.setText(profile.getBirthDay());
+							profileDialog.birthMonthField.setText(profile.getBirthMonth());
+							profileDialog.birthYearField.setText(profile.getBirthYear());
 							profileDialog.phoneNumberField.setText(profile.getPhoneNumber());
 							profileDialog.emailAddressField.setText(profile.getEmailAddress());
 						}
@@ -404,8 +431,14 @@ public class HomeFrame extends JFrame {
 									profileDialog.firstNameField.setText(profile.getFirstName());
 									profileDialog.middleNameField.setText(profile.getMiddleName());
 									profileDialog.lastNameField.setText(profile.getLastName());
-									profileDialog.addressField.setText(profile.getAddress());
-									profileDialog.dateOfBirthField.setText(profile.getDateOfBirth());
+									profileDialog.streetAddressField.setText(profile.getStreetAddress());
+									profileDialog.cityField.setText(profile.getCity());
+									profileDialog.provinceField.setText(profile.getProvince());
+									profileDialog.postalCodeField.setText(profile.getPostalCode());
+									profileDialog.countryField.setText(profile.getCountry());
+									profileDialog.birthDayField.setText(profile.getBirthDay());
+									profileDialog.birthMonthField.setText(profile.getBirthMonth());
+									profileDialog.birthYearField.setText(profile.getBirthYear());
 									profileDialog.phoneNumberField.setText(profile.getPhoneNumber());
 									profileDialog.emailAddressField.setText(profile.getEmailAddress());
 								}
@@ -443,8 +476,16 @@ public class HomeFrame extends JFrame {
 				createNewProfileDialog.firstNameField.setText("");
 				createNewProfileDialog.middleNameField.setText("");
 				createNewProfileDialog.lastNameField.setText("");
-				createNewProfileDialog.addressField.setText("");
-				createNewProfileDialog.dateOfBirthField.setText("");
+				createNewProfileDialog.streetAddressField.setForeground(Color.GRAY);
+				createNewProfileDialog.streetAddressField.setText("Street address");
+				createNewProfileDialog.cityField.setForeground(Color.GRAY);
+				createNewProfileDialog.cityField.setText("City");
+				createNewProfileDialog.provinceField.setForeground(Color.GRAY);
+				createNewProfileDialog.provinceField.setText("Province");
+				createNewProfileDialog.postalCodeField.setForeground(Color.GRAY);
+				createNewProfileDialog.postalCodeField.setText("Postal Code");
+				createNewProfileDialog.countryField.setForeground(Color.GRAY);
+				createNewProfileDialog.countryField.setText("Country");
 				createNewProfileDialog.phoneNumberField.setText("");
 				createNewProfileDialog.emailField.setText("");
 				createNewProfileDialog.setVisible(true);

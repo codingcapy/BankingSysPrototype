@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class ProfileDialog extends JDialog {
 
@@ -30,16 +31,22 @@ public class ProfileDialog extends JDialog {
 	JTextField firstNameField;
 	JTextField middleNameField;
 	JTextField lastNameField;
-	JTextField addressField;
+	JTextField streetAddressField;
 	JTextField phoneNumberField;
 	JTextField emailAddressField;
 	AccountDialog accountDialog;
 	JButton saveButton;
-	JTextField dateOfBirthField;
 	CreateAccountDialog createAccountDialog;
 	NotesDialog notesDialog;
 	JList<Account> list;
 	JList<Note> notesList;
+	JTextField cityField;
+	JTextField provinceField;
+	JTextField postalCodeField;
+	JTextField countryField;
+	JTextField birthDayField;
+	JTextField birthMonthField;
+	JTextField birthYearField;
 
 	/**
 	 * Launch the application.
@@ -62,11 +69,11 @@ public class ProfileDialog extends JDialog {
 		setTitle("Profile");
 		createAccountDialog = new CreateAccountDialog();
 		accountDialog = new AccountDialog();
-		setBounds(600, 250, 1000, 500);
+		setBounds(600, 250, 1000, 700);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(new MigLayout("", "[][85px:85px][][185px:185px,grow][][75px:75px][][185px:185px][][75px:75px][][150px:150px][][][][-81.00][-21.00][-27.00]", "[][][][][][][][][][grow][][grow][]"));
+		contentPanel.setLayout(new MigLayout("", "[][85px:85px][][135px:135px,grow][][135px:135px,grow][][135px:135px,grow][][135px:135px,grow][][135px:135px,grow][][][][-81.00][-21.00][-27.00]", "[][][][][][][][][][][][grow][][grow]"));
 		{
 			JLabel profileNumberLabel = new JLabel("Profile Number");
 			contentPanel.add(profileNumberLabel, "cell 1 1");
@@ -112,50 +119,84 @@ public class ProfileDialog extends JDialog {
 			contentPanel.add(addressLabel, "cell 1 5");
 		}
 		{
-			addressField = new JTextField();
-			addressField.setEnabled(false);
-			contentPanel.add(addressField, "cell 3 5,growx");
-			addressField.setColumns(10);
+			streetAddressField = new JTextField();
+			streetAddressField.setEnabled(false);
+			contentPanel.add(streetAddressField, "cell 3 5,growx");
+			streetAddressField.setColumns(10);
+		}
+		{
+			cityField = new JTextField();
+			cityField.setEnabled(false);
+			contentPanel.add(cityField, "cell 5 5,growx");
+			cityField.setColumns(10);
+		}
+		{
+			provinceField = new JTextField();
+			provinceField.setEnabled(false);
+			contentPanel.add(provinceField, "cell 7 5,growx");
+			provinceField.setColumns(10);
+		}
+		{
+			postalCodeField = new JTextField();
+			postalCodeField.setEnabled(false);
+			contentPanel.add(postalCodeField, "cell 9 5,growx");
+			postalCodeField.setColumns(10);
+		}
+		{
+			countryField = new JTextField();
+			countryField.setEnabled(false);
+			contentPanel.add(countryField, "cell 11 5,growx");
+			countryField.setColumns(10);
 		}
 		{
 			JLabel dateOfBirthLabel = new JLabel("Date of Birth");
-			contentPanel.add(dateOfBirthLabel, "cell 5 5");
+			contentPanel.add(dateOfBirthLabel, "cell 1 7");
 		}
 		{
-			dateOfBirthField = new JTextField();
-			dateOfBirthField.setText("YYYY-MM-DD");
-			dateOfBirthField.setEnabled(false);
-			contentPanel.add(dateOfBirthField, "cell 7 5,growx");
-			dateOfBirthField.setColumns(10);
+			birthDayField = new JTextField();
+			birthDayField.setEnabled(false);
+			contentPanel.add(birthDayField, "cell 3 7,growx");
+			birthDayField.setColumns(10);
+		}
+		{
+			birthMonthField = new JTextField();
+			birthMonthField.setEnabled(false);
+			contentPanel.add(birthMonthField, "cell 5 7,growx");
+			birthMonthField.setColumns(10);
+		}
+		{
+			birthYearField = new JTextField();
+			birthYearField.setEnabled(false);
+			contentPanel.add(birthYearField, "cell 7 7,growx");
+			birthYearField.setColumns(10);
 		}
 		{
 			JLabel phoneNumberLabel = new JLabel("Phone Number");
-			contentPanel.add(phoneNumberLabel, "cell 1 7");
+			contentPanel.add(phoneNumberLabel, "cell 1 9");
 		}
 		{
 			phoneNumberField = new JTextField();
-			phoneNumberField.setText("###-###-####");
 			phoneNumberField.setEnabled(false);
-			contentPanel.add(phoneNumberField, "cell 3 7,growx");
+			contentPanel.add(phoneNumberField, "cell 3 9,growx");
 			phoneNumberField.setColumns(10);
 		}
 		{
 			JLabel emailAddressLabel = new JLabel("Email Address");
-			contentPanel.add(emailAddressLabel, "cell 5 7");
+			contentPanel.add(emailAddressLabel, "cell 5 9");
 		}
 		{
 			emailAddressField = new JTextField();
 			emailAddressField.setEnabled(false);
-			contentPanel.add(emailAddressField, "cell 7 7,growx");
+			contentPanel.add(emailAddressField, "cell 7 9,growx");
 			emailAddressField.setColumns(10);
 		}
 		{
 			JLabel accountsLabel = new JLabel("Accounts");
-			contentPanel.add(accountsLabel, "cell 1 9");
+			contentPanel.add(accountsLabel, "cell 1 11");
 		}
 		{
 			JScrollPane scrollPane = new JScrollPane();
-			contentPanel.add(scrollPane, "cell 3 9 9 1,grow");
+			contentPanel.add(scrollPane, "cell 3 11 9 1,grow");
 			{
 				list = new JList<Account>(Storage.accountsListModel);
 				scrollPane.setViewportView(list);
@@ -172,7 +213,7 @@ public class ProfileDialog extends JDialog {
 					accountDialog.setVisible(true);
 				}
 			});
-			contentPanel.add(selectAccountButton, "flowy,cell 13 9");
+			contentPanel.add(selectAccountButton, "flowy,cell 13 11");
 		}
 		{
 			JButton createAccountButton = new JButton("Create Account");
@@ -182,7 +223,7 @@ public class ProfileDialog extends JDialog {
 					createAccountDialog.setVisible(true);
 				}
 			});
-			contentPanel.add(createAccountButton, "cell 13 9");
+			contentPanel.add(createAccountButton, "cell 13 11");
 		}
 		{
 			JButton deleteAccountButton = new JButton("Delete Account");
@@ -201,15 +242,15 @@ public class ProfileDialog extends JDialog {
 					}
 				}
 			});
-			contentPanel.add(deleteAccountButton, "cell 13 9");
+			contentPanel.add(deleteAccountButton, "cell 13 11");
 		}
 		{
 			JLabel notesLabel = new JLabel("Notes");
-			contentPanel.add(notesLabel, "cell 1 11");
+			contentPanel.add(notesLabel, "cell 1 13");
 		}
 		{
 			JScrollPane scrollPane = new JScrollPane();
-			contentPanel.add(scrollPane, "cell 3 11 9 1,grow");
+			contentPanel.add(scrollPane, "cell 3 13 9 1,grow");
 			{
 				notesList = new JList<Note>(Storage.notesListModel);
 				scrollPane.setViewportView(notesList);
@@ -224,7 +265,7 @@ public class ProfileDialog extends JDialog {
 					notesDialog.setVisible(true);
 				}
 			});
-			contentPanel.add(addNotesButton, "cell 13 11");
+			contentPanel.add(addNotesButton, "cell 13 13");
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -239,8 +280,14 @@ public class ProfileDialog extends JDialog {
 						String firstName = firstNameField.getText();
 						String middleName = middleNameField.getText();
 						String lastName = lastNameField.getText();
-						String dateOfBirth = dateOfBirthField.getText();
-						String address = addressField.getText();
+						String birthDay = (String) birthDayField.getText();
+						String birthMonth = (String) birthMonthField.getText();
+						String birthYear = (String) birthYearField.getText();
+						String streetAddress = streetAddressField.getText();
+						String city = cityField.getText();
+						String province = provinceField.getText();
+						String postalCode = postalCodeField.getText();
+						String country = countryField.getText();
 						String phoneNumber = phoneNumberField.getText();
 						String emailAddress = emailAddressField.getText();
 
@@ -249,8 +296,14 @@ public class ProfileDialog extends JDialog {
 								profile.setFirstName(firstName);
 								profile.setMiddleName(middleName);
 								profile.setLastName(lastName);
-								profile.setDateOfBirth(dateOfBirth);
-								profile.setAddress(address);
+								profile.setBirthDay(birthDay);
+								profile.setBirthMonth(birthMonth);
+								profile.setBirthYear(birthYear);
+								profile.setStreetAddress(streetAddress);
+								profile.setCity(city);
+								profile.setProvince(province);
+								profile.setPostalCode(postalCode);
+								profile.setCountry(country);
 								profile.setPhoneNumber(phoneNumber);
 								profile.setEmailAddress(emailAddress);
 								index = Storage.profilesList.indexOf(profile);
@@ -260,15 +313,27 @@ public class ProfileDialog extends JDialog {
 						Storage.profilesListModel.get(index).setFirstName(firstName);
 						Storage.profilesListModel.get(index).setMiddleName(middleName);
 						Storage.profilesListModel.get(index).setLastName(lastName);
-						Storage.profilesListModel.get(index).setDateOfBirth(dateOfBirth);
-						Storage.profilesListModel.get(index).setAddress(address);
+						Storage.profilesListModel.get(index).setBirthDay(birthDay);
+						Storage.profilesListModel.get(index).setBirthMonth(birthMonth);
+						Storage.profilesListModel.get(index).setBirthYear(birthYear);
+						Storage.profilesListModel.get(index).setStreetAddress(streetAddress);
+						Storage.profilesListModel.get(index).setCity(city);
+						Storage.profilesListModel.get(index).setProvince(province);
+						Storage.profilesListModel.get(index).setPostalCode(postalCode);
+						Storage.profilesListModel.get(index).setCountry(country);
 						Storage.profilesListModel.get(index).setPhoneNumber(phoneNumber);
 						Storage.profilesListModel.get(index).setEmailAddress(emailAddress);
 						firstNameField.setEnabled(false);
 						middleNameField.setEnabled(false);
 						lastNameField.setEnabled(false);
-						dateOfBirthField.setEnabled(false);
-						addressField.setEnabled(false);
+						birthDayField.setEnabled(false);
+						birthMonthField.setEnabled(false);
+						birthYearField.setEnabled(false);
+						streetAddressField.setEnabled(false);
+						cityField.setEnabled(false);
+						provinceField.setEnabled(false);
+						postalCodeField.setEnabled(false);
+						countryField.setEnabled(false);
 						phoneNumberField.setEnabled(false);
 						emailAddressField.setEnabled(false);
 						saveButton.setVisible(false);
@@ -283,8 +348,14 @@ public class ProfileDialog extends JDialog {
 						firstNameField.setEnabled(true);
 						middleNameField.setEnabled(true);
 						lastNameField.setEnabled(true);
-						dateOfBirthField.setEnabled(true);
-						addressField.setEnabled(true);
+						birthDayField.setEnabled(true);
+						birthMonthField.setEnabled(true);
+						birthYearField.setEnabled(true);
+						streetAddressField.setEnabled(true);
+						cityField.setEnabled(true);
+						provinceField.setEnabled(true);
+						postalCodeField.setEnabled(true);
+						countryField.setEnabled(true);
 						phoneNumberField.setEnabled(true);
 						emailAddressField.setEnabled(true);
 						saveButton.setVisible(true);

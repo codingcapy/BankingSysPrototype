@@ -1,6 +1,4 @@
-00000000,test,test,test,test,test,test,test
-00000001,test2,test2,test2,test2,test2,test2,test2
-00000002,Anthony,Edward,Stark,1970-05-29,10880 Malibu Point 90265,123-456-7890,tony.stark@starkindustries.com
-00000003,test3,test3,test3,test3,test3,test3,test3
-00000004,hotdog,a,hamburger,1987/9/1,123 mushroom blvd,8127096,stephology@gmail.com
-00000005,Steven,Grant,Rogers,1918-07-04,569 Leaman Place Brooklyn,987-654-3210,steve.rogers@gmail.com
+00000000,Anthony,Edward,Stark,1970,5,29,10880 Malibu Point,Malibu,California,90265,United States,1234567890,tony.stark@starkindustries.com
+00000001,Steven,Grant,Rogers,1920,7,4,569 Leaman Place ,Brooklyn,New York,17562,United States,0987654321,steve.rogers@gmail.com
+00000002,test3,test3,test3,1911,1,1,test3,test3,test3,test3,test3,test3,test3
+00000003,test2,test2,test2,2023,12,31,test2,test2,test2,test2,test2,test2,test2

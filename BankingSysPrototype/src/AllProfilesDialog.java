@@ -59,12 +59,19 @@ public class AllProfilesDialog extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						Storage.accountsListModel.removeAllElements();
+						Storage.notesListModel.removeAllElements();
 						profileDialog.profileNumberField.setText(list.getSelectedValue().getProfileNumber());
 						profileDialog.firstNameField.setText(list.getSelectedValue().getFirstName());
 						profileDialog.middleNameField.setText(list.getSelectedValue().getMiddleName());
 						profileDialog.lastNameField.setText(list.getSelectedValue().getLastName());
-						profileDialog.dateOfBirthField.setText(list.getSelectedValue().getDateOfBirth());
-						profileDialog.addressField.setText(list.getSelectedValue().getAddress());
+						profileDialog.birthYearField.setText(list.getSelectedValue().getBirthYear());
+						profileDialog.birthMonthField.setText(list.getSelectedValue().getBirthMonth());
+						profileDialog.birthDayField.setText(list.getSelectedValue().getBirthDay());
+						profileDialog.streetAddressField.setText(list.getSelectedValue().getStreetAddress());
+						profileDialog.cityField.setText(list.getSelectedValue().getCity());
+						profileDialog.provinceField.setText(list.getSelectedValue().getProvince());
+						profileDialog.postalCodeField.setText(list.getSelectedValue().getPostalCode());
+						profileDialog.countryField.setText(list.getSelectedValue().getCountry());
 						profileDialog.phoneNumberField.setText(list.getSelectedValue().getPhoneNumber());
 						profileDialog.emailAddressField.setText(list.getSelectedValue().getEmailAddress());
 						for (Account account : Storage.accountsList) {
